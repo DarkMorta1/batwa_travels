@@ -20,22 +20,17 @@ function BottomNav() {
 
   return (
     <nav className="bottom-nav">
-      {navItems.map(item => {
+      {navItems.map((item) => {
         const isActive = pathname === item.path
-        const Tag = item.disabled ? 'button' : Link
-        const props = item.disabled
-          ? { type: 'button', disabled: true }
-          : { to: item.path }
-
         return (
-          <Tag
+          <Link
             key={item.path}
+            to={item.path}
             className={`nav-btn ${isActive ? 'nav-btn--active' : ''}`}
-            {...props}
           >
             <span className="icon" aria-hidden>{item.icon}</span>
             <span className="nav-label">{item.label}</span>
-          </Tag>
+          </Link>
         )
       })}
     </nav>
@@ -64,4 +59,3 @@ export default function App() {
     </div>
   )
 }
-
